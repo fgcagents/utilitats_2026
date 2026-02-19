@@ -1,12 +1,39 @@
  <!DOCTYPE html>
 <html lang="ca">
 <head>
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="description" content="Aplicació web per consultar horaris FGC, calcular devolucions i més">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FGC utilitats">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="/images/icon-192x192.png">
+    <link rel="apple-touch-icon" href="/images/icon-192x192.png">
+
+    <!-- Register Service Worker -->
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+            .then((registration) => {
+            console.log('✓ Service Worker registrat:', registration);
+            })
+            .catch((error) => {
+            console.error('Error al registrar Service Worker:', error);
+            });
+        });
+    }
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora devolucions</title>
     <link rel="stylesheet" href="menu.css"> <!-- Estils del menú -->
     <link rel="stylesheet" href="calculadora-devolucions.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@200..700&display=swap">
+    
 </head>
 <body>
     <!-- Menú reutilitzable -->
